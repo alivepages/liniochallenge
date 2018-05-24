@@ -8,25 +8,32 @@ class ReplaceAll
   protected $sequence;
 
   /** @var  array */
-  protected $replaceers;
+  protected $replacers;
 
   /**
-   * @param object $sequence
+   * Constructor, creates an object with the sequence to alter and all replacers
    *
-   * @param array $replaceers
+   * @param object $sequence
+   * @param array $replacers
    */
-  public function __construct(SequenceWithReplace $sequence, array $replaceers)
+  public function __construct(SequenceWithReplace $sequence, array $replacers)
   {
       $this->sequence = $sequence;
-      $this->replaceers = $replaceers;
+      $this->replacers = $replacers;
   }
 
+  /**
+   * This methos execute all replacements
+   *
+   * @return object replaced sequence
+   */
   public function getReplacedSequence()
   {
-    arsort($this->replaceers);
+    // order to apply the largest dividers first
+    arsort($this->replacers);
     array_map(
       array($this->sequence, 'replace'),
-      $this->replaceers
+      $this->replacers
     );
     return $this->sequence;
   }

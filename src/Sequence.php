@@ -11,6 +11,8 @@ class Sequence implements SequenceInterface
   protected $content;
 
   /**
+   * Constructor, create an object that is a sequence of numbers from 1 to number
+   *
    * @param int $number
    */
   public function __construct(int $number)
@@ -19,12 +21,21 @@ class Sequence implements SequenceInterface
     $this->fill();
   }
 
+  /**
+   * Create a sequence of numbers from 1 to number
+   */
   public function fill()
   {
     $this->content = range(1, $this->number);
   }
 
-  public function getContent() {
+  /**
+   * Get the content
+   *
+   * @return array content of sequence
+   */
+  public function getContent()
+  {
     return $this->content;
   }
 

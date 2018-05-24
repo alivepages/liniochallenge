@@ -2,7 +2,7 @@
 declare(strict_types=1);
 namespace Linio\Challenge;
 
-class Replaceer implements ReplaceerInterface
+class Replacer implements ReplacerInterface
 {
   /** @var int */
   protected $divider;
@@ -11,6 +11,8 @@ class Replaceer implements ReplaceerInterface
   protected $text;
 
   /**
+   * Constructor, creates an object that configures the replacements
+   *
    * @param int $divider
    * @param string $text
    */
@@ -21,11 +23,12 @@ class Replaceer implements ReplaceerInterface
   }
 
   /**
-   * @param string $item
+   * This method check if an item is divisible, if so, make the replacement by text
    *
+   * @param string $item
    * @return string Returns the item replaced if it is divisible
    */
-  public function replace(string $item): string
+  public function replace($item)
   {
     if (fmod ((integer) $item, $this->divider)) {
       return $item;

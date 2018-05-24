@@ -4,9 +4,15 @@ namespace Linio\Challenge;
 
 class SequenceWithReplace extends Sequence implements SequenceWithReplaceInterface
 {
-  public function replace(Replaceer $replaceer) {
+  /**
+   * This method applies an replacement configuration to the entire sequence content
+   *
+   * @param object $sequence
+   */
+  public function replace(Replacer $replacer)
+  {
     $this->content = array_map(
-      array($replaceer, 'replace'),
+      array($replacer, 'replace'),
       $this->content
     );
   }
