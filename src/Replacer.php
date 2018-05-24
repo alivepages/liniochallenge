@@ -30,7 +30,7 @@ class Replacer implements ReplacerInterface
    */
   public function replace($item)
   {
-    if (fmod ((integer) $item, $this->divider)) {
+    if (!is_int($item) || fmod ($item, $this->divider)) {
       return $item;
     }
     return $this->text;
